@@ -2,21 +2,6 @@
     <h1> User-centric Subjective Leaderboard via Customizable Reward Modeling </h1>
 </div>
 
-<div align= "center">
-<p>
-<a href="https://arxiv.org/abs/2508.09463">📖 Arxiv</a> |
-<!-- <a href="https://huggingface.co/datasets/ASCIIEval/ASCIIEval">🤗 ASCIIEval Dataset</a> |
-<a href="https://huggingface.co/datasets/ASCIIEval/ASCIITune">🤗 ASCIITune Dataset</a> -->
-</p>
-</div>
-
-
-Existing benchmarks for large language models (LLMs) predominantely focus on assessing their capabilities through verifiable tasks. Such objective and static benchmarks offer limited utility for practical LLM selection, making it difficult for users to find suitable models for their individual needs. Other arena-based evaluations and LLM-as-a-judge benchmarks complement objective leaderboards, but unfortunately only reflect the aggregated preferences of the general public. To bridge this gap, we present the first User-Centric Subjective Leaderboard (USL), which provides a preference-driven, dynamic ranking of LLMs across diverse real-world scenarios. Our work is built upon a thorough investigation of real human preference data, involving more than 10K subjective queries. Our investigation reveals significant diversity and contradictions in human preferences, which limit the effectiveness of state-of-the-art reward models. To address this, we introduce Customizable Reward Models (CRMs). With only 4B parameters, our CRM surpasses the performance of leading models such as GPT-4.1 and Gemini-2.5-pro, showing exceptional generalization capabilities across new topics and criteria. The USL, powered by CRMs, exhibits strong negative correlations to contradictory preferences.
-
-<h1 align="center">
-<img src="./illustration.png" alt="Motivation" width="50%"/>
-<br>
-</h1>
 
 # Customizable Reward Modeling
 
@@ -46,10 +31,6 @@ Examples of training / test data use the **JSON Lines** format (one sample per l
   "preference": "model_a"  // or "model_b" or "tie"
 }
 ```
-
-The data will be open-sourced soon. Please stay tuned for updates.
-
-
 
 
 ## Train a Customizable Reward Model
@@ -93,9 +74,6 @@ An screenshot of the interactive interface is shown below. Users can select topi
 <img src="./screenshot.jpg" alt="Motivation" width="80%"/>
 </h1>
 
-The relevant material will be open-sourced soon.
-
-
 # Project Layout
 
 ```text
@@ -118,17 +96,4 @@ The relevant material will be open-sourced soon.
 │   ├── train_rm_pair.sh
 │   └── eval.sh
 └── README.md
-```
-
-
-
-## Citation
-
-```
-@article{jia2025usl,
-  title={User-centric Subjective Leaderboard via Customizable Reward Modeling},
-  author={Jia, Qi and Song, Xiujie and Zhang, Zicheng and Guo, Yijin and Zhang, Kaiwei and Chen, Zijian and Zhai, Guangtao},
-  journal={arXiv preprint arXiv:2508.09463},
-  year={2025}
-}
 ```

@@ -12,7 +12,6 @@ import random
 from typing import List
 
 from utils.seeding import set_global_seed
-set_global_seed(42)
 from utils.prompt import REWARD_MODEL_SYSTEM_PROMPT, PAIR_REWARD_MODEL_PROMPT
 from utils import make_up_dialogue
 from data import PreferenceDataset
@@ -176,8 +175,8 @@ class RMPairEvaluator:
         tokenized = self.tokenizer(inputs, padding="longest", return_tensors="pt", add_special_tokens=False)
         return tokenized, inputs
 
-    def run(self, eval_data_file: str, output_file: str):
-        dataset = PreferenceDataset(eval_data_file)
+    def run(self, eval_data_file: str, output_file: str, shuffle: bool = False):
+        dataset = PreferenceDataset(eval_data_file, shuffle=shuffle)
         loader = DataLoader(dataset, batch_size=self.batch_size, shuffle=False)
         print("here")
         start_idx, accuracy, pass_rate = 0, [], []
@@ -235,7 +234,12 @@ if __name__ == "__main__":
     # parser.add_argument("--enable_thinking", type=int, default=-1)
     parser.add_argument("--use_criteria", type=int, default=1)
     parser.add_argument("--eval_mode", type=str, default="rm", help="rm_pair, rm")
+    parser.add_argument("--shuffle", action="store_true")
+    parser.add_argument("--random_seed", type=int, default=42)
     args = parser.parse_args()
+
+
+    set_global_seed(args.random_seed)
 
     output_dir = os.path.join(args.output_dir, args.model_name.split("/")[-1])
     if not os.path.exists(output_dir):
@@ -259,4 +263,4 @@ if __name__ == "__main__":
         print("here")
         evaluator = RMPairEvaluator(args.model_name, batch_size=4, use_criteria=user_criteria)
         print("ready for eval")
-        evaluator.run(args.eval_data_file, output_file)
+        evaluator.run(args.eval_data_file, output_file, shuffle=args.shuffle)
