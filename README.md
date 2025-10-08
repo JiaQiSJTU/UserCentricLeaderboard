@@ -71,7 +71,7 @@ Based on CRMs, we introduce the first User-centric Subjective Leaderboard (USL),
 An screenshot of the interactive interface is shown below. Users can select topics of interest and input personalized preference criteria to obtain a customized model leaderboard.
 
 <h1 align="center">
-<img src="./screenshot.jpg" alt="Motivation" width="80%"/>
+<img src="./screenshot.jpg" alt="screenshot" width="80%"/>
 </h1>
 
 # Project Layout
